@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlick – Seu look em movimento</title>
+    <meta name="description"
+        content="O FitFlick usa IA para transformar sua foto + o print da roupa em um vídeo real seu usando o look. Teste antes de comprar.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">FitFlick</a>
+
+            <div class="nav-links">
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#planos">Planos</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-outline login-btn">Entrar</a>
+                <button class="btn btn-primary open-modal-btn">Começar grátis</button>
+            </div>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#como-funciona" class="mobile-link">Como funciona</a>
+            <a href="#beneficios" class="mobile-link">Benefícios</a>
+            <a href="#planos" class="mobile-link">Planos</a>
+            <a href="#depoimentos" class="mobile-link">Depoimentos</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <button class="btn btn-primary open-modal-btn mobile-cta">Começar grátis</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="social-proof-badge">
+                    <span>🎥 +2000 usuárias ja estão participando e aprovam!</span>
+                </div>
+                <h1 class="fade-up">FitFlick – seu look em movimento.</h1>
+                <p class="hero-subtitle fade-up delay-100">
+                    Antes de comprar na Shein ou em qualquer loja online, teste o look em VOCÊ.
+                    O FitFlick usa IA para transformar sua foto + o print da roupa em um vídeo real seu usando o look!
+                </p>
+                <ul class="hero-bullets fade-up delay-200">
+                    <li><i class="fas fa-check-circle"></i> Pare de comprar roupa que chega diferente do que você
+                        imaginava.</li>
+                    <li><i class="fas fa-check-circle"></i> Veja como <strong>parte de cima, parte de baixo,
+                            biquínis/maiôs e vestidos</strong> ficam no seu corpo.</li>
+                    <li><i class="fas fa-check-circle"></i> Use o provador virtual em qualquer lugar, direto do seu
+                        celular.</li>
+                </ul>
+                <div class="hero-buttons fade-up delay-300">
+                    <button class="btn btn-primary open-modal-btn">Começar grátis agora</button>
+                    <a href="#como-funciona" class="btn btn-outline">Ver o FitFlick em ação</a>
+                </div>
+                <p class="hero-note">Não precisa de cartão de crédito. Funciona com qualquer print de roupa (Shein,
+                    TikTok, Instagram, Pinterest, lojas locais).</p>
+            </div>
+            <div class="hero-visual slide-in-right delay-200">
+                <div class="app-mockup">
+                    <!-- Placeholder for App Interface -->
+                    <div class="mockup-screen">
+                        <div class="mockup-header">
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                            <div class="mockup-dot"></div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-split">
+                                <div class="mockup-user-photo">
+                                    <div class="placeholder-text">Sua Foto</div>
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="mockup-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="mockup-clothing-print">
+                                    <div class="placeholder-text">Print do Look</div>
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                            </div>
+                            <div class="mockup-result">
+                                <div class="play-icon"><i class="fas fa-play"></i></div>
+                                <div class="placeholder-text">Vídeo Gerado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners / Social Proof -->
+    <section class="partners">
+        <div class="container">
+            <p class="partners-title">Em breve usado por criadoras e lojas de moda em todo o Brasil</p>
+            <div class="partners-logos fade-in delay-200">
+                <div class="partner-placeholder scale-in delay-100"></div>
+                <div class="partner-placeholder scale-in delay-200"></div>
+                <div class="partner-placeholder scale-in delay-300"></div>
+                <div class="partner-placeholder scale-in delay-400"></div>
+                <div class="partner-placeholder scale-in delay-500"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Por que usar o FitFlick antes de comprar roupa online?</h2>
+                <p>Mais segurança pra comprar, mais conteúdo pra postar, menos arrependimento no carrinho.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-up">
+                    <div class="benefit-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Veja o look em você, não só na modelo</h3>
+                    <p>Você envia sua foto, escolhe se é <strong>parte de cima, parte de baixo, biquíni/maiô ou
+                            vestido/conjunto</strong>, sobe o print da roupa e recebe um vídeo seu usando o look. Nada
+                        de adivinhar caimento só pela foto da loja.</p>
+                </div>
+                <div class="benefit-card fade-up delay-100">
+                    <div class="benefit-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>Menos compras erradas, mais peças que você realmente usa</h3>
+                    <p>Usar o FitFlick antes de finalizar a compra evita aquele clássico ‘no site era lindo, no meu
+                        corpo não rolou’. Você testa combinações, compara looks e já decide o que faz sentido de verdade
+                        antes de pagar.</p>
+                </div>
+                <div class="benefit-card fade-up delay-200">
+                    <div class="benefit-icon"><i class="fas fa-video"></i></div>
+                    <h3>Transforme prints em conteúdo de moda</h3>
+                    <p>Com o FitFlick, você usa IA pra gerar vídeos prontos pra Reels e TikTok. Faça hauls, GRWM, ‘1
+                        calça, 5 looks’, ‘meus vestidos favoritos’ – sem precisar ter todas as peças no armário.</p>
+                </div>
+                <div class="benefit-card fade-up delay-300">
+                    <div class="benefit-icon"><i class="fas fa-th-large"></i></div>
+                    <h3>Seu closet digital, organizado por tipo de peça</h3>
+                    <p>Cada vídeo vira um ‘card de look’ no <strong>Meu Closet FitFlick</strong>. Você separa por
+                        ocasião (trabalho, balada, praia, viagem) e filtra por tipo de peça: só vestidos, só biquínis,
+                        só partes de cima… tudo em um só lugar.</p>
+                </div>
+                <div class="benefit-card fade-up delay-400">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Comunidade que ama moda e IA</h3>
+                    <p>Participe de desafios como <strong>‘7 Days of Looks’</strong> e <strong>‘Shein Haul
+                            Week’</strong>, use as hashtags oficiais, apareça nos destaques mensais e concorra a
+                        créditos extras. Você não testa looks sozinha: faz parte de uma comunidade que ama experimentar
+                        estilos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como o FitFlick funciona na prática?</h2>
+                <p>Em 3 passos você transforma qualquer print de roupa em um vídeo seu usando o look.</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card fade-up">
+                    <div class="step-number">1</div>
+                    <h3>Envie sua foto</h3>
+                    <p>Tire ou envie uma foto sua (frontal, com boa luz). Não precisa ser perfeita, só clara o bastante
+                        para o FitFlick ‘entender’ seu corpo.</p>
+                </div>
+                <div class="step-card fade-up delay-200">
+                    <div class="step-number">2</div>
+                    <h3>Escolha a peça</h3>
+                    <p>Selecione o tipo de peça – <strong>parte de cima, parte de baixo, biquínis/maiôs,
+                            conjuntos/vestidos</strong> – e envie o print ou foto da roupa: pode ser da Shein, de outra
+                        loja online, do Instagram, TikTok, Pinterest ou até da vitrine da loja local.</p>
+                </div>
+                <div class="step-card fade-up delay-400">
+                    <div class="step-number">3</div>
+                    <h3>Receba seu vídeo</h3>
+                    <p>O FitFlick gera um vídeo curto seu usando o look, pronto pra você decidir se vale a compra,
+                        mandar pras amigas ou postar nos stories.</p>
+                </div>
+            </div>
+            <div class="cta-mini">
+                <p>Cadastre-se e ganhe 2 vídeos de teste grátis para ver tudo isso em ação.</p>
+                <button class="btn btn-primary open-modal-btn">Teste grátis agora</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Escolha o plano que combina com a sua relação com a moda</h2>
+                <p>Comece grátis, teste o provador e evolua conforme usar mais.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card fade-up">
+                    <h3>FitFlick Basic</h3>
+                    <div class="price">R$ 12,90 <span>/ mês</span></div>
+                    <p class="plan-desc">Para quem salva looks todo dia e quer testar em si mesma sem gastar muito.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 10 vídeos de provador IA por mês</li>
+                        <li><i class="fas fa-check"></i> Suporte a todos os tipos de peça (top, bottom, beachwear,
+                            vestidos/conjuntos)</li>
+                        <li><i class="fas fa-check"></i> Marca d’água discreta (pode postar nos stories, se quiser)</li>
+                        <li><i class="fas fa-check"></i> Histórico básico de looks (lista simples dos vídeos recentes)
+                        </li>
+                        <li><i class="fas fa-check"></i> Alguns templates básicos (GRWM simples, look casual, look
+                            trabalho)</li>
+                        <li><i class="fas fa-check"></i> Acesso aos desafios semanais do FitFlick Club</li>
+                    </ul>
+                    <button class="btn btn-outline open-modal-btn">Assinar Starter</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card popular fade-up delay-100">
+                    <div class="popular-badge">Mais escolhido</div>
+                    <h3>FitFlick Premium</h3>
+                    <div class="price">R$ 27,90 <span>/ mês</span></div>
+                    <p class="plan-desc">Para quem compra muito online e quer escolher cada look com segurança.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 30 vídeos de provador IA por mês</li>
+                        <li><i class="fas fa-check"></i> Sem marca d’água – vídeos limpos pra mandar pras amigas ou
+                            postar</li>
+                        <li><i class="fas fa-check"></i> Closet IA essencial, com filtro por tipo de peça (tops,
+                            bottoms, beachwear, vestidos/conjuntos)</li>
+                        <li><i class="fas fa-check"></i> Comparação de até 2 looks lado a lado</li>
+                        <li><i class="fas fa-check"></i> Templates avançados selecionados (Date Night, Beach Day, Office
+                            Chic)</li>
+                        <li><i class="fas fa-check"></i> Acesso VIP a alguns desafios temáticos com mais chance de
+                            destaque</li>
+                        <li><i class="fas fa-check"></i> Suporte com prioridade normal (acima do Starter)</li>
+                    </ul>
+                    <button class="btn btn-primary open-modal-btn">Assinar Unlimited</button>
+                </div>
+
+                <!-- Diamond Plan -->
+                <div class="pricing-card fade-up delay-200">
+                    <h3>FitFlick Diamond</h3>
+                    <div class="price">R$ 39,90 <span>/ mês</span></div>
+                    <p class="plan-desc">Para creators e influencers que querem conteúdo de moda todo dia.</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 80 vídeos de provador IA por mês</li>
+                        <li><i class="fas fa-check"></i> Sem marca d’água + resolução amigável para redes sociais</li>
+                        <li><i class="fas fa-check"></i> Export em formato 9:16, pronto para Reels, TikTok e Shorts</li>
+                        <li><i class="fas fa-check"></i> Geração em lote (1 foto, vários looks em sequência)</li>
+                        <li><i class="fas fa-check"></i> Pacotes de roteiros prontos de conteúdo (ex.: 1 calça, 5 looks;
+                            7 vestidos em 7 dias)</li>
+                        <li><i class="fas fa-check"></i> Acesso ao Creator Hub do FitFlick Club</li>
+                        <li><i class="fas fa-check"></i> Selo “Creator” e mais chance de aparecer nos destaques</li>
+                        <li><i class="fas fa-check"></i> Acesso antecipado a novas features e templates em beta</li>
+                    </ul>
+                    <button class="btn btn-outline open-modal-btn">Assinar Creator</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>O que quem já testou o FitFlick está dizendo</h2>
+                <p>Feedback das primeiras usuárias beta.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p>“Eu sempre comprava na Shein meio no escuro. Com o FitFlick eu testei 6 vestidos antes de fechar
+                        o carrinho e fiquei feliz com TODAS as peças que chegaram.”</p>
+                    <div class="author">Ana Paula, 24 anos</div>
+                </div>
+                <div class="testimonial-card fade-in delay-100">
+                    <div class="stars">★★★★★</div>
+                    <p>“Uso o FitFlick pra criar Reels com looks que eu nem comprei ainda. Meu conteúdo dobrou e minhas
+                        seguidoras pedem link de tudo.”</p>
+                    <div class="author">Júlia Martins, criadora de conteúdo</div>
+                </div>
+                <div class="testimonial-card fade-in delay-200">
+                    <div class="stars">★★★★★</div>
+                    <p>“Sou zero boa de imaginar combinação de roupa. Agora testo uma blusa com três calças diferentes
+                        em vídeo e já decido na hora o que faz sentido pra mim.”</p>
+                    <div class="author">Camila Rocha, 29 anos</div>
+                </div>
+                <div class="testimonial-card fade-in delay-300">
+                    <div class="stars">★★★★★</div>
+                    <p>“Amei o negócio dos biquínis. Eu tenho vergonha de experimentar em loja, então ver o caimento em
+                        vídeo antes me deixou muito mais segura pra comprar.”</p>
+                    <div class="author">Larissa Silva, 21 anos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas frequentes</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">Preciso pagar algo para testar o FitFlick? <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Não. Você se cadastra, ganha 2 vídeos de provador IA por mês no plano Free e já consegue ver
+                            na prática como funciona – sem cartão de crédito.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O FitFlick funciona só com roupas da Shein? <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Não. Ele funciona com qualquer print ou foto de roupa: Shein, outras lojas online, Instagram,
+                            TikTok, Pinterest, fotos de vitrine… basta a roupa estar visível na imagem.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">O resultado é 100% idêntico à vida real? <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>O FitFlick é um provador virtual baseado em IA. Ele não substitui a prova física, mas ajuda
+                            MUITO a entender caimento, estilo e sensação geral do look no seu corpo. A ideia é reduzir
+                            compras erradas – não prometer perfeição milimétrica.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Minha foto fica exposta para outras pessoas? <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Não. Suas fotos e vídeos são usados apenas para gerar seus looks e ficam disponíveis só pra
+                            você dentro da sua conta. Você só aparece publicamente se decidir postar nas redes ou
+                            permitir uso em desafios/comunidade.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Posso cancelar quando quiser? <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer">
+                        <p>Sim. Você pode cancelar a qualquer momento. Seu acesso continua até o fim do período já pago
+                            e depois não será cobrado novamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronta para ver seu próximo look em movimento?</h2>
+            <p>Cadastre-se, ganhe 2 vídeos de teste e descubra como é experimentar roupas da internet em você, antes de
+                comprar.</p>
+            <button class="btn btn-primary btn-large open-modal-btn">Começar grátis com 2 vídeos agora</button>
+            <p class="cta-note">Leva menos de 1 minuto. Sem cartão, sem compromisso – só você, seus prints de roupa e o
+                FitFlick cuidando do resto.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">FitFlick</div>
+            <div class="footer-links">
+                <a href="#">Termos de uso</a>
+                <a href="#">Política de privacidade</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <div class="footer-copy">
+                © 2025 FitFlick. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tryout Modal -->
+    <div class="modal-overlay" id="tryoutModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+
+            <!-- Step 1: Signup -->
+            <div class="modal-step active" id="step1">
+                <h3>Comece seu teste grátis</h3>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Email ou WhatsApp</label>
+                        <input type="text" id="contact" placeholder="seu@email.com ou (11) 99999-9999" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Continuar para o provador</button>
+                    <p class="modal-note">Ao continuar você aceita nossa política de privacidade.</p>
+                </form>
+            </div>
+
+            <!-- Step 2: Simulation -->
+            <div class="modal-step" id="step2">
+                <h3>Monte seu look</h3>
+                <form id="simulationForm">
+                    <div class="form-group">
+                        <label>Sua foto</label>
+                        <div class="file-upload" id="userPhotoUpload">
+                            <i class="fas fa-camera"></i>
+                            <span>Clique para enviar sua foto</span>
+                            <input type="file" id="userPhotoInput" accept="image/*">
+                        </div>
+                        <div class="file-preview" id="userPhotoPreview">
+                            <img src="" alt="Sua foto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de peça</label>
+                        <select class="form-select">
+                            <option>Parte de cima</option>
+                            <option>Parte de baixo</option>
+                            <option>Biquínis/Maiôs</option>
+                            <option>Conjuntos/Vestidos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Print da roupa</label>
+                        <div class="file-upload" id="clothingPrintUpload">
+                            <i class="fas fa-image"></i>
+                            <span>Envie o print da roupa</span>
+                            <input type="file" id="clothingPrintInput" accept="image/*">
+                        </div>
+                        <div class="file-preview" id="clothingPrintPreview">
+                            <img src="" alt="Print da roupa">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Gerar vídeo de teste</button>
+                </form>
+                <!-- Loading State (Hidden by default) -->
+                <div class="loading-state" id="loadingState" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>A IA está criando seu vídeo...</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Result -->
+            <div class="modal-step" id="step3">
+                <h3>Seu look está pronto!</h3>
+                <div class="result-preview">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Vídeo Demo</span>
+                    </div>
+                </div>
+                <p class="result-text">É assim que o FitFlick transforma sua foto + o print da roupa em um vídeo do seu
+                    look em movimento.</p>
+                <div class="result-actions">
+                    <a href="#planos" class="btn btn-primary btn-full" id="unlockBtn">Quero desbloquear mais vídeos todo
+                        mês</a>
+                    <button class="btn btn-outline btn-full" id="closeResultBtn">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

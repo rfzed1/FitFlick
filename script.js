@@ -88,6 +88,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Forms
     const signupForm = document.getElementById('signupForm');
 
+    // Email validation helper
+    function isValidEmail(email) {
+        if (!email) return false;
+        const parts = email.split("@");
+        if (parts.length !== 2) return false;
+        const [local, domain] = parts;
+        if (!local || !domain) return false;
+        if (domain.indexOf(".") === -1) return false;
+        if (email.startsWith(".") || email.endsWith(".") || email.startsWith("@") || email.endsWith("@")) {
+            return false;
+        }
+        return true;
+    }
+
+    // Utility functions for future use (login area)
+    function getCurrentUser() {
+        const userStr = localStorage.getItem("fitflick_user");
+        return userStr ? JSON.parse(userStr) : null;
+    }
+
+    function getAuthToken() {
+        return localStorage.getItem("fitflick_token");
+    }
+
     function openModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
@@ -126,27 +150,162 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Step 1 -> Step 2
-    signupForm.addEventListener('submit', (e) => {
+    // Step 1: Real Registration
+    signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        // Here you would normally send data to backend
-        step1.classList.remove('active');
-        step2.classList.add('active');
+
+        const signupNameInput = document.getElementById('signupName');
+        const signupEmailInput = document.getElementById('signupEmail');
+        const signupPhoneInput = document.getElementById('signupPhone');
+        const signupPasswordInput = document.getElementById('signupPassword');
+        const signupError = document.getElementById('signupError');
+
+        const name = signupNameInput.value.trim();
+        const email = signupEmailInput.value.trim();
+        const phone = signupPhoneInput.value.trim();
+        const password = signupPasswordInput.value;
+
+        // Clear previous error
+        if (signupError) {
+            signupError.style.display = 'none';
+            signupError.textContent = '';
+        }
+
+        // Validations
+        if (!name || !email || !phone || !password) {
+            if (signupError) {
+                signupError.textContent = "Preencha todos os campos para continuar.";
+                signupError.style.display = 'block';
+            }
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            if (signupError) {
+                signupError.textContent = "Por favor, informe um e-mail válido.";
+                signupError.style.display = 'block';
+            }
+            return;
+        }
+
+        if (password.length < 6) {
+            if (signupError) {
+                signupError.textContent = "A senha deve ter pelo menos 6 caracteres.";
+                signupError.style.display = 'block';
+            }
+            return;
+        }
+
+        // Phone validation
+        const numericPhone = phone.replace(/\D/g, "");
+        if (numericPhone.length < 8) {
+            if (signupError) {
+                signupError.textContent = "Informe um número de celular válido.";
+                signupError.style.display = 'block';
+            }
+            return;
+        }
+
+        // Call backend registration
+        try {
+            const response = await fetch("http://localhost:3000/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, email, phone, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                const message = data.error || "Erro ao criar sua conta. Tente novamente.";
+                if (signupError) {
+                    signupError.textContent = message;
+                    signupError.style.display = 'block';
+                }
+                return;
+            }
+
+            // Save token and user to localStorage
+            if (data.token) {
+                localStorage.setItem("fitflick_token", data.token);
+            }
+            if (data.user) {
+                localStorage.setItem("fitflick_user", JSON.stringify(data.user));
+            }
+
+            console.log("✅ Usuário registrado com sucesso:", data.user);
+
+            // Proceed to Step 2 (upload)
+            step1.classList.remove('active');
+            step2.classList.add('active');
+
+        } catch (err) {
+            console.error("Erro em signupForm:", err);
+            if (signupError) {
+                signupError.textContent = "Erro de comunicação com o servidor. Verifique se o backend está rodando.";
+                signupError.style.display = 'block';
+            }
+        }
     });
 
     // Step 2 -> Loading -> Step 3
-    simulationForm.addEventListener('submit', (e) => {
+    simulationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        const userImageInput = document.getElementById('userPhotoInput');
+        const clothesImageInput = document.getElementById('clothingPrintInput');
+        const pieceTypeSelect = document.getElementById('pieceTypeSelect');
+        const resultImg = document.getElementById('resultImage');
+
+        // Validate files
+        if (!userImageInput.files[0] || !clothesImageInput.files[0]) {
+            alert("Envie a foto da pessoa e o print da roupa para continuar.");
+            return;
+        }
+
+        // Show loading state
         simulationForm.style.display = 'none';
         loadingState.style.display = 'block';
 
-        // Simulate processing time
-        setTimeout(() => {
+        try {
+            // Prepare FormData
+            const formData = new FormData();
+            formData.append("userImage", userImageInput.files[0]);
+            formData.append("clothesImage", clothesImageInput.files[0]);
+            formData.append("pieceType", pieceTypeSelect.value);
+
+            // Call backend API
+            const response = await fetch("http://localhost:3000/api/generate-look", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (!data.success) {
+                alert(data.error || "Erro ao gerar look com a IA.");
+                loadingState.style.display = 'none';
+                simulationForm.style.display = 'block';
+                return;
+            }
+
+            // Display the result
+            resultImg.src = `data:${data.mimeType};base64,${data.imageBase64}`;
+            resultImg.style.display = 'block';
+
+            // Move to step 3
             loadingState.style.display = 'none';
             step2.classList.remove('active');
             step3.classList.add('active');
-        }, 2000);
+
+        } catch (error) {
+            console.error("Erro na comunicação com o servidor:", error);
+            alert("Erro na comunicação com o servidor. Verifique se o backend está rodando em http://localhost:3000");
+            loadingState.style.display = 'none';
+            simulationForm.style.display = 'block';
+        }
     });
 
     // Unlock button (go to pricing)

@@ -531,6 +531,24 @@ ul {
     margin-bottom: 1rem;
 }
 
+.step-card p {
+    line-height: 1.7;
+}
+
+/* Prevent awkward text breaking on mobile */
+.no-break {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* On very small screens, allow breaking but keep words together */
+@media (max-width: 480px) {
+    .no-break {
+        white-space: normal;
+        word-break: keep-all;
+    }
+}
+
 .cta-mini {
     text-align: center;
     background-color: var(--bg-color);
@@ -543,6 +561,48 @@ ul {
 .cta-mini p {
     margin-bottom: 1.5rem;
     font-weight: 500;
+}
+
+/* Video Tutorial Placeholder */
+.video-placeholder-container {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.video-placeholder {
+    background: linear-gradient(135deg, rgba(139, 92, 255, 0.1) 0%, rgba(255, 123, 176, 0.1) 100%);
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--radius-lg);
+    padding: 4rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.video-placeholder:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 255, 0.15) 0%, rgba(255, 123, 176, 0.15) 100%);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.video-placeholder i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.video-placeholder p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.video-placeholder span {
+    font-size: 0.9rem;
+    color: var(--text-color);
 }
 
 @media (min-width: 768px) {
@@ -899,6 +959,9 @@ footer {
 }
 
 .form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
 .form-select {
     width: 100%;
     padding: 0.75rem;
@@ -906,6 +969,7 @@ footer {
     border-radius: var(--radius-md);
     font-family: var(--font-body);
     font-size: 1rem;
+    background-color: var(--white);
 }
 
 .form-group input:focus,
@@ -913,6 +977,15 @@ footer {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(139, 92, 255, 0.1);
+}
+
+/* Prevent browser autofill styling */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .file-upload {

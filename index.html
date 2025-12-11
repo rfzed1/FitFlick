@@ -186,6 +186,16 @@
                 <h2>Como o FitFlick funciona na prática?</h2>
                 <p>Em 3 passos você transforma qualquer print de roupa em um vídeo seu usando o look.</p>
             </div>
+
+            <!-- Video Tutorial Placeholder -->
+            <div class="video-placeholder-container">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Vídeo tutorial em breve</p>
+                    <span>Aprenda a usar todas as features do FitFlick</span>
+                </div>
+            </div>
+
             <div class="steps-container">
                 <div class="step-card fade-up">
                     <div class="step-number">1</div>
@@ -196,7 +206,8 @@
                 <div class="step-card fade-up delay-200">
                     <div class="step-number">2</div>
                     <h3>Escolha a peça</h3>
-                    <p>Selecione o tipo de peça – <strong>parte de cima, parte de baixo, biquínis/maiôs,
+                    <p>Selecione o tipo de peça – <strong class="no-break">parte de cima, parte de baixo,
+                            biquínis/maiôs,
                             conjuntos/vestidos</strong> – e envie o print ou foto da roupa: pode ser da Shein, de outra
                         loja online, do Instagram, TikTok, Pinterest ou até da vitrine da loja local.</p>
                 </div>
@@ -412,16 +423,29 @@
 
             <!-- Step 1: Signup -->
             <div class="modal-step active" id="step1">
-                <h3>Comece seu teste grátis</h3>
+                <h3>Crie sua conta gratuita</h3>
+                <p style="margin-bottom: 20px; color: #666;">Você terá acesso a 2 looks grátis e poderá fazer upgrade
+                    depois</p>
                 <form id="signupForm">
                     <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" id="name" placeholder="Seu nome" required>
+                        <label for="signupName">Nome</label>
+                        <input type="text" id="signupName" name="name" placeholder="Seu nome completo" required>
                     </div>
                     <div class="form-group">
-                        <label for="contact">Email ou WhatsApp</label>
-                        <input type="text" id="contact" placeholder="seu@email.com ou (11) 99999-9999" required>
+                        <label for="signupEmail">E-mail</label>
+                        <input type="email" id="signupEmail" name="email" placeholder="seu@email.com" required>
                     </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Celular (WhatsApp)</label>
+                        <input type="tel" id="signupPhone" name="phone" placeholder="(11) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Senha</label>
+                        <input type="password" id="signupPassword" name="password"
+                            placeholder="Crie uma senha (mín. 6 caracteres)" required>
+                    </div>
+                    <p id="signupError" class="error-message"
+                        style="display:none; color: #e74c3c; margin-bottom: 15px;"></p>
                     <button type="submit" class="btn btn-primary btn-full">Continuar para o provador</button>
                     <p class="modal-note">Ao continuar você aceita nossa política de privacidade.</p>
                 </form>
@@ -444,11 +468,11 @@
                     </div>
                     <div class="form-group">
                         <label>Tipo de peça</label>
-                        <select class="form-select">
-                            <option>Parte de cima</option>
-                            <option>Parte de baixo</option>
-                            <option>Biquínis/Maiôs</option>
-                            <option>Conjuntos/Vestidos</option>
+                        <select class="form-select" id="pieceTypeSelect">
+                            <option value="top">Parte de cima</option>
+                            <option value="bottom">Parte de baixo</option>
+                            <option value="swimwear">Biquínis/Maiôs</option>
+                            <option value="dress_set">Conjuntos/Vestidos</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -475,10 +499,8 @@
             <div class="modal-step" id="step3">
                 <h3>Seu look está pronto!</h3>
                 <div class="result-preview">
-                    <div class="video-placeholder">
-                        <i class="fas fa-play-circle"></i>
-                        <span>Vídeo Demo</span>
-                    </div>
+                    <img id="resultImage" src="" alt="Look gerado"
+                        style="max-width: 100%; border-radius: 12px; display: none;" />
                 </div>
                 <p class="result-text">É assim que o FitFlick transforma sua foto + o print da roupa em um vídeo do seu
                     look em movimento.</p>
